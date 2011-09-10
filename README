@@ -1,0 +1,6 @@
+SonicScala
+==========
+
+This project aims to give users of the Sonic ESB a nice API to access the config and runtime management
+functions.
+

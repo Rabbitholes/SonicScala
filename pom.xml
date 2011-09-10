@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.woq.sonic.scala</groupId>
+  <artifactId>de.woq.sonic.scala.scalamanagement</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>[WoQ Scala API for the Sonic Management Framework]</name>
+
+  <properties>
+    <scala.version>2.9.1</scala.version>
+    <scala-plugin.version>2.15.2</scala-plugin.version>
+    <sonic.version>7.6.0</sonic.version>
+    <xerces.version>2.9.1</xerces.version>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+  	  <groupId>com.progress.sonic.mq</groupId>
+	    <artifactId>sonic_Client</artifactId>
+	    <version>${sonic.version}</version>
+	  </dependency>
+
+    <dependency>
+  	  <groupId>com.progress.sonic.mq</groupId>
+	    <artifactId>sonic_Crypto</artifactId>
+	    <version>${sonic.version}</version>
+	  </dependency>
+
+    <dependency>
+      <groupId>com.progress.sonic.mq</groupId>
+      <artifactId>sonic_mgmt_client</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.progress.sonic.mq</groupId>
+      <artifactId>mgmt_client</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.progress.sonic.mq</groupId>
+      <artifactId>mgmt_config</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.progress.sonic.mq</groupId>
+      <artifactId>mfcontext</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.progress.sonic.esb</groupId>
+      <artifactId>xq_core</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.progress.sonic.esb</groupId>
+      <artifactId>xq_config</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>${xerces.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.scala-tools</groupId>
+        <artifactId>maven-scala-plugin</artifactId>
+        <version>${scala-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>scala-compile</id>
+            <goals>
+              <goal>add-source</goal>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <scalaVersion>${scala.version}</scalaVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
