@@ -32,7 +32,7 @@
 
     <dependency>
       <groupId>com.progress.sonic.mq</groupId>
-      <artifactId>sonic_mgmt_client</artifactId>
+      <artifactId> sonic_mgmt_client</artifactId>
       <version>${sonic.version}</version>
     </dependency>
 

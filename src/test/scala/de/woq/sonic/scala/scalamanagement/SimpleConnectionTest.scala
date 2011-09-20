@@ -1,5 +1,8 @@
 package de.woq.sonic.scala.scalamanagement
 
+import com.sonicsw.ma.mgmtapi.config.IMgmtBeanBase
+import com.sonicsw.mx.config.ConfigAttributeException
+
 object SimpleConnectionTest {
 
   def main(args : Array[String]) {
@@ -8,11 +11,15 @@ object SimpleConnectionTest {
     val queries = new SonicDomainQueries(connector)
 
     val brokers = queries.brokerBeanNames.map(queries.getBrokerInfo)
-    val esbContainers = queries.esbContainerBeanNames.map(queries.getEsbContainerInfo)
 
-    println(brokers.mkString("\n"))
-    println(esbContainers.mkString("\n"))
+    val beans = brokers.map(broker => {
+      val bean = new MgmtBeanBase(broker)
+      bean.attributes
+    })
 
+    println(beans.mkString("\n"))
     connector.close()
   }
+
+
 }

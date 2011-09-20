@@ -3,7 +3,6 @@ package de.woq.sonic.scala.scalamanagement
 import scala.collection.JavaConverters._
 import com.sonicsw.mq.mgmtapi.config.IBrokerBean
 import com.sonicsw.xqimpl.mgmtapi.config.IXQContainerBean
-
 class SonicDomainQueries(connector : SonicDomainConnector) {
 
   val sonicConnector = connector
@@ -19,4 +18,6 @@ class SonicDomainQueries(connector : SonicDomainConnector) {
 
   def getEsbContainerInfo(esbContainerName : String) : IXQContainerBean =
     connector.xqBeanFactory.getXQContainerBean(esbContainerName)
+
+
 }
