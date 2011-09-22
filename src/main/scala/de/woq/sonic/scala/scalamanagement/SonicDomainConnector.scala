@@ -31,7 +31,6 @@ class SonicDomainConnector (
   private var hasDS = false
   private var hasDSStore = false
 
-
   def this() = this("Domain", "tcp://localhost:2506", "Administrator", "Administrator")
   def this(domain: String, url : String) = this(domain, url, "Administrator", "Administrator")
 
