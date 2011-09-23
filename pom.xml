@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -19,20 +20,20 @@
   <dependencies>
 
     <dependency>
-  	  <groupId>com.progress.sonic.mq</groupId>
-	    <artifactId>sonic_Client</artifactId>
-	    <version>${sonic.version}</version>
-	  </dependency>
-
-    <dependency>
-  	  <groupId>com.progress.sonic.mq</groupId>
-	    <artifactId>sonic_Crypto</artifactId>
-	    <version>${sonic.version}</version>
-	  </dependency>
+      <groupId>com.progress.sonic.mq</groupId>
+      <artifactId>sonic_Client</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>com.progress.sonic.mq</groupId>
-      <artifactId> sonic_mgmt_client</artifactId>
+      <artifactId>sonic_Crypto</artifactId>
+      <version>${sonic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.progress.sonic.mq</groupId>
+      <artifactId>sonic_mgmt_client</artifactId>
       <version>${sonic.version}</version>
     </dependency>
 
@@ -81,6 +82,44 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>CopyJars</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+              <useRepositoryLayout>false</useRepositoryLayout>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>CreateTar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/unix-assembly.xml</descriptor>
+              </descriptors>
+              <finalName>${project.artifactId}-${project.version}</finalName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>

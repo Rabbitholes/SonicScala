@@ -8,13 +8,13 @@ class SonicDomainQueries(connector : SonicDomainConnector) {
   val sonicConnector = connector
 
   lazy val brokerBeanNames =
-    sonicConnector.mqBeanFactory.getBrokerBeanNames.asScala.map(_ + "/_Default")
+    sonicConnector.mqBeanFactory.getBrokerBeanNames.asScala.map(_ + "/_Default").toList
 
   lazy val containerBeanNames =
-    sonicConnector.mfBeanFactory.getContainerBeanNames.asScala.map(_.asInstanceOf[String])
+    sonicConnector.mfBeanFactory.getContainerBeanNames.asScala.map(_.asInstanceOf[String]).toList
 
   lazy val esbContainerBeanNames =
-    sonicConnector.xqBeanFactory.getXQContainerBeanNames.asScala.map(_.asInstanceOf[String])
+    sonicConnector.xqBeanFactory.getXQContainerBeanNames.asScala.map(_.asInstanceOf[String]).toList
 
   def getConfigBean(configBeanName: String): IMgmtBeanBase =
     try {

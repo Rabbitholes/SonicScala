@@ -62,7 +62,7 @@ case class ConfigRef(o: Configuration, n: String, v: IConfigBean) extends Config
 
   override def children =
     if (this.owns(value))
-      StringConfiguration(this, "REFERENCE", value.getName) :: List()
+      StringConfiguration(this, "REFLINK", value.getName) :: List()
     else
       MapConfiguration(this, "REFERENCE", value.asInstanceOf[IAttributeMap]) :: List()
 }
